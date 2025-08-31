@@ -1,0 +1,464 @@
+.menuOCR {
+	.cameraSection {
+		.cameraContainer {
+			position: relative;
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto;
+			border-radius: 12px;
+			overflow: hidden;
+			background: #000;
+		}
+
+		.cameraPermissionSection {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 400px;
+			padding: 40px 20px;
+
+			.permissionStatus {
+				text-align: center;
+				max-width: 500px;
+
+				.statusIcon {
+					font-size: 4rem;
+					margin-bottom: 20px;
+				}
+
+				h3 {
+					font-size: 1.5rem;
+					font-weight: 600;
+					color: #2c3e50;
+					margin: 0 0 12px 0;
+				}
+
+				p {
+					color: #6c757d;
+					margin: 0 0 24px 0;
+					font-size: 1rem;
+					line-height: 1.5;
+				}
+
+				.errorMessage {
+					background: #f8d7da;
+					border: 1px solid #f5c6cb;
+					border-radius: 8px;
+					padding: 16px;
+					margin-bottom: 24px;
+
+					p {
+						color: #721c24;
+						margin: 0;
+						font-size: 0.9rem;
+					}
+				}
+
+				.permissionActions {
+					display: flex;
+					flex-direction: column;
+					gap: 16px;
+					align-items: center;
+
+					.enableCameraButton {
+						--xtreme-primary-color: #28a745;
+						min-width: 160px;
+					}
+
+					.permissionHelp {
+						background: #e7f3ff;
+						border: 1px solid #b3d9ff;
+						border-radius: 8px;
+						padding: 20px;
+						text-align: left;
+						max-width: 400px;
+
+						h4 {
+							margin: 0 0 12px 0;
+							font-size: 1rem;
+							font-weight: 600;
+							color: #0c5460;
+						}
+
+						ol {
+							margin: 0 0 12px 0;
+							padding-left: 20px;
+							color: #0c5460;
+
+							li {
+								margin-bottom: 6px;
+								font-size: 0.9rem;
+							}
+						}
+
+						p {
+							margin: 0;
+							font-size: 0.85rem;
+							color: #0c5460;
+							line-height: 1.4;
+						}
+					}
+				}
+			}
+		}
+
+			.cameraVideo {
+				width: 100%;
+				height: 400px;
+				object-fit: cover;
+			}
+
+			.cameraOverlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				pointer-events: none;
+
+				.scanFrame {
+					position: relative;
+					width: 80%;
+					height: 60%;
+					border: 2px solid rgba(255, 255, 255, 0.8);
+					border-radius: 8px;
+
+					.corner {
+						position: absolute;
+						width: 20px;
+						height: 20px;
+						border: 3px solid #667eea;
+
+						&.top-left {
+							top: -3px;
+							left: -3px;
+							border-right: none;
+							border-bottom: none;
+						}
+
+						&.top-right {
+							top: -3px;
+							right: -3px;
+							border-left: none;
+							border-bottom: none;
+						}
+
+						&.bottom-left {
+							bottom: -3px;
+							left: -3px;
+							border-right: none;
+							border-top: none;
+						}
+
+						&.bottom-right {
+							bottom: -3px;
+							right: -3px;
+							border-left: none;
+							border-top: none;
+						}
+					}
+				}
+
+				p {
+					color: white;
+					background: rgba(0, 0, 0, 0.7);
+					padding: 8px 16px;
+					border-radius: 20px;
+					margin-top: 20px;
+					font-size: 14px;
+					text-align: center;
+				}
+			}
+		}
+
+		.cameraControls {
+			display: flex;
+			justify-content: center;
+			gap: 16px;
+			margin-top: 24px;
+
+			.captureButton {
+				--xtreme-primary-color: #667eea;
+				min-width: 140px;
+			}
+		}
+	}
+
+	.previewSection {
+		.imagePreview {
+			text-align: center;
+			margin-bottom: 24px;
+
+			img {
+				max-width: 100%;
+				max-height: 400px;
+				border-radius: 8px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			}
+		}
+
+		.previewControls {
+			display: flex;
+			justify-content: center;
+			gap: 16px;
+
+			.processButton {
+				--xtreme-primary-color: #28a745;
+				min-width: 140px;
+			}
+		}
+	}
+
+	.editingSection {
+		.editingHeader {
+			text-align: center;
+			margin-bottom: 24px;
+
+			h3 {
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: #2c3e50;
+				margin: 0 0 8px 0;
+			}
+
+			p {
+				color: #6c757d;
+				margin: 0;
+				font-size: 0.95rem;
+			}
+		}
+
+		.menuItemsList {
+			max-height: 500px;
+			overflow-y: auto;
+			margin-bottom: 24px;
+
+			&::-webkit-scrollbar {
+				width: 6px;
+			}
+
+			&::-webkit-scrollbar-track {
+				background: #f1f1f1;
+				border-radius: 3px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: #c1c1c1;
+				border-radius: 3px;
+
+				&:hover {
+					background: #a8a8a8;
+				}
+			}
+
+			.menuItemCard {
+				background: white;
+				border: 1px solid #e9ecef;
+				border-radius: 12px;
+				padding: 20px;
+				margin-bottom: 16px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+				.itemHeader {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-bottom: 16px;
+					padding-bottom: 12px;
+					border-bottom: 1px solid #e9ecef;
+
+					h4 {
+						margin: 0;
+						font-size: 1.1rem;
+						font-weight: 600;
+						color: #2c3e50;
+					}
+
+					.removeButton {
+						--xtreme-primary-color: #dc3545;
+						--xtreme-button-padding: 8px;
+					}
+				}
+
+				.itemFields {
+					.fieldRow {
+						display: grid;
+						grid-template-columns: 1fr 1fr;
+						gap: 16px;
+						margin-bottom: 16px;
+
+						@media (max-width: 768px) {
+							grid-template-columns: 1fr;
+							gap: 12px;
+						}
+					}
+
+					.field {
+						display: flex;
+						flex-direction: column;
+						gap: 6px;
+
+						label {
+							font-weight: 500;
+							color: #2c3e50;
+							font-size: 0.9rem;
+						}
+
+						input, select, textarea {
+							padding: 10px 12px;
+							border: 1px solid #e9ecef;
+							border-radius: 8px;
+							font-size: 0.9rem;
+							transition: border-color 0.3s ease;
+							font-family: inherit;
+
+							&:focus {
+								outline: none;
+								border-color: #667eea;
+								box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+							}
+						}
+
+						textarea {
+							resize: vertical;
+							min-height: 80px;
+						}
+
+						select {
+							background: white;
+							cursor: pointer;
+						}
+					}
+				}
+			}
+		}
+
+		.editingActions {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-top: 20px;
+			border-top: 1px solid #e9ecef;
+
+			@media (max-width: 768px) {
+				flex-direction: column;
+				gap: 16px;
+				align-items: stretch;
+			}
+
+			.saveActions {
+				display: flex;
+				gap: 12px;
+
+				@media (max-width: 768px) {
+					justify-content: center;
+				}
+			}
+
+			.saveButton {
+				--xtreme-primary-color: #28a745;
+				min-width: 140px;
+			}
+		}
+	}
+}
+
+// OCR Button styling
+.ocrButton {
+	--xtreme-primary-color: #667eea;
+	margin-bottom: 16px;
+}
+
+// Modal content styling
+.modalContent {
+	.modalHeader {
+		text-align: center;
+		margin-bottom: 24px;
+		padding-bottom: 16px;
+		border-bottom: 1px solid #e9ecef;
+
+		h2 {
+			margin: 0;
+			font-size: 1.8rem;
+			font-weight: 600;
+			color: #2c3e50;
+		}
+	}
+
+	.cancelButton, .retakeButton, .addButton {
+		--xtreme-primary-color: #6c757d;
+		background: #f8f9fa;
+		border: 1px solid #dee2e6;
+		color: #495057;
+
+		&:hover {
+			background: #e9ecef;
+			border-color: #adb5bd;
+		}
+	}
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+	.menuOCR {
+		.cameraSection {
+			.cameraContainer {
+				.cameraVideo {
+					height: 300px;
+				}
+
+				.cameraOverlay {
+					.scanFrame {
+						width: 90%;
+						height: 70%;
+					}
+
+					p {
+						font-size: 12px;
+						padding: 6px 12px;
+					}
+				}
+			}
+
+			.cameraControls {
+				flex-direction: column;
+				align-items: center;
+
+				button {
+					width: 100%;
+					max-width: 200px;
+				}
+			}
+		}
+
+		.previewSection {
+			.previewControls {
+				flex-direction: column;
+				align-items: center;
+
+				button {
+					width: 100%;
+					max-width: 200px;
+				}
+			}
+		}
+
+		.editingSection {
+			.editingActions {
+				.saveActions {
+					flex-direction: column;
+					align-items: center;
+
+					button {
+						width: 100%;
+						max-width: 200px;
+					}
+				}
+			}
+		}
+	}
+}

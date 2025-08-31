@@ -1,3 +1,5 @@
+'use client';
+
 import { capitalize } from 'xtreme-ui';
 
 import { CustomerProvider } from '#components/context';
@@ -14,14 +16,6 @@ const navItems = [
 	{ label: 'sign out', value: 'signout', icon: 'f011' },
 ];
 
-export async function generateMetadata ({ params, searchParams }: IMetaDataProps) {
-	const p = await params;
-	const s = await searchParams;
-	return {
-		title: `${capitalize(p.restaurant)}${s.tab ? ` • ${capitalize(s.tab)}` : ''}`,
-	};
-}
-
 const Restaurant = () => {
 	return (
 		<CustomerProvider>
@@ -34,13 +28,3 @@ const Restaurant = () => {
 };
 
 export default Restaurant;
-
-interface IMetaDataProps {
-	params: {
-		restaurant: string;
-	};
-	searchParams: {
-		tab?: string;
-		[key: string]: string | undefined;
-	};
-}

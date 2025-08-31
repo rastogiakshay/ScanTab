@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation.js';
 
 import MenuEditor from './MenuEditor/MenuEditor';
 import SettingsAccount from './SettingsAccount';
+import TableEditor from './TableEditor/TableEditor';
 import './settings.scss';
 
 const Settings = (props: TSettingsProps) => {
@@ -18,7 +19,7 @@ const Settings = (props: TSettingsProps) => {
 
 				menu: <MenuEditor />,
 
-				// tables: <TableEditor showScrollBarAtRef={showScrollBarAtRef} />,
+				tables: <TableEditor />,
 			}[subTab]}
 		</div>
 	);

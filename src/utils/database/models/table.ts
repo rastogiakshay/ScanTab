@@ -39,6 +39,7 @@ TableSchema.post('save', async function () {
 
 export const Tables = mongoose.models?.tables ?? mongoose.model<TTable>('tables', TableSchema);
 export type TTable = {
+	_id: mongoose.Types.ObjectId | string;
 	name: string;
 	username: string;
 	restaurantID: string;

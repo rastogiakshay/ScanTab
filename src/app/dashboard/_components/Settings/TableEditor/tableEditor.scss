@@ -1,0 +1,334 @@
+.tableEditor {
+	padding: 24px;
+	max-width: 1200px;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 32px;
+
+		h2 {
+			font-size: 28px;
+			font-weight: 600;
+			color: var(--text-primary);
+			margin: 0;
+		}
+
+		.addButton {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			padding: 12px 20px;
+			background: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: 8px;
+			font-size: 14px;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.2s ease;
+
+			&:hover {
+				background: var(--primary-color-dark);
+				transform: translateY(-1px);
+			}
+
+			&:active {
+				transform: translateY(0);
+			}
+		}
+	}
+
+	.tablesList {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 20px;
+
+		.noTables {
+			grid-column: 1 / -1;
+			text-align: center;
+			padding: 60px 20px;
+			color: var(--text-secondary);
+
+			.icon {
+				margin-bottom: 16px;
+				opacity: 0.6;
+			}
+
+			p {
+				font-size: 18px;
+				margin-bottom: 20px;
+			}
+
+			button {
+				padding: 12px 24px;
+				background: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: 8px;
+				font-size: 14px;
+				cursor: pointer;
+				transition: background 0.2s ease;
+
+				&:hover {
+					background: var(--primary-color-dark);
+				}
+			}
+		}
+
+		.tableCard {
+			background: white;
+			border: 1px solid var(--border-color);
+			border-radius: 12px;
+			padding: 20px;
+			transition: all 0.2s ease;
+
+			&:hover {
+				border-color: var(--primary-color);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			}
+
+			.tableInfo {
+				margin-bottom: 20px;
+
+				.tableHeader {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-bottom: 12px;
+
+					h3 {
+						font-size: 18px;
+						font-weight: 600;
+						color: var(--text-primary);
+						margin: 0;
+					}
+
+					.status {
+						padding: 4px 12px;
+						border-radius: 20px;
+						font-size: 12px;
+						font-weight: 500;
+						text-transform: capitalize;
+
+						&.available {
+							background: #e8f5e8;
+							color: #2e7d32;
+						}
+
+						&.occupied {
+							background: #fff3e0;
+							color: #f57c00;
+						}
+
+						&.reserved {
+							background: #e3f2fd;
+							color: #1976d2;
+						}
+
+						&.maintenance {
+							background: #ffebee;
+							color: #d32f2f;
+						}
+					}
+				}
+
+				.tableDetails {
+					display: flex;
+					gap: 20px;
+					font-size: 14px;
+					color: var(--text-secondary);
+
+					span {
+						display: flex;
+						align-items: center;
+						gap: 4px;
+					}
+				}
+			}
+
+			.tableActions {
+				display: flex;
+				gap: 8px;
+
+				button {
+					flex: 1;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 6px;
+					padding: 8px 12px;
+					border: 1px solid var(--border-color);
+					background: white;
+					color: var(--text-primary);
+					border-radius: 6px;
+					font-size: 12px;
+					cursor: pointer;
+					transition: all 0.2s ease;
+
+					&:hover {
+						border-color: var(--primary-color);
+						background: var(--primary-color);
+						color: white;
+					}
+
+					&.qrButton {
+						&:hover {
+							border-color: #4caf50;
+							background: #4caf50;
+						}
+					}
+
+					&.editButton {
+						&:hover {
+							border-color: #2196f3;
+							background: #2196f3;
+						}
+					}
+
+					&.deleteButton {
+						&:hover {
+							border-color: #f44336;
+							background: #f44336;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.tableModal {
+	max-width: 500px;
+	width: 100%;
+
+	h3 {
+		font-size: 24px;
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0 0 24px 0;
+		text-align: center;
+	}
+
+	form {
+		.formGroup {
+			margin-bottom: 20px;
+
+			label {
+				display: block;
+				font-size: 14px;
+				font-weight: 500;
+				color: var(--text-primary);
+				margin-bottom: 8px;
+			}
+
+			input, select {
+				width: 100%;
+				padding: 12px 16px;
+				border: 1px solid var(--border-color);
+				border-radius: 8px;
+				font-size: 14px;
+				background: white;
+				color: var(--text-primary);
+				transition: border-color 0.2s ease;
+
+				&:focus {
+					outline: none;
+					border-color: var(--primary-color);
+				}
+
+				&::placeholder {
+					color: var(--text-tertiary);
+				}
+			}
+
+			select {
+				cursor: pointer;
+			}
+		}
+
+		.formActions {
+			display: flex;
+			gap: 12px;
+			margin-top: 32px;
+
+			button {
+				flex: 1;
+				padding: 12px 20px;
+				border: none;
+				border-radius: 8px;
+				font-size: 14px;
+				font-weight: 500;
+				cursor: pointer;
+				transition: all 0.2s ease;
+
+				&:first-child {
+					background: var(--background-secondary);
+					color: var(--text-primary);
+
+					&:hover {
+						background: var(--background-tertiary);
+					}
+
+					&:disabled {
+						opacity: 0.6;
+						cursor: not-allowed;
+					}
+				}
+
+				&:last-child {
+					background: var(--primary-color);
+					color: white;
+
+					&:hover {
+						background: var(--primary-color-dark);
+					}
+
+					&:disabled {
+						opacity: 0.6;
+						cursor: not-allowed;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Responsive design
+@media (max-width: 768px) {
+	.tableEditor {
+		padding: 16px;
+
+		.header {
+			flex-direction: column;
+			gap: 16px;
+			align-items: stretch;
+
+			.addButton {
+				justify-content: center;
+			}
+		}
+
+		.tablesList {
+			grid-template-columns: 1fr;
+			gap: 16px;
+
+			.tableCard {
+				.tableActions {
+					flex-direction: column;
+
+					button {
+						justify-content: center;
+					}
+				}
+			}
+		}
+	}
+
+	.tableModal {
+		.formActions {
+			flex-direction: column;
+		}
+	}
+}

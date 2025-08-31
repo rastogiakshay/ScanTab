@@ -1,3 +1,5 @@
+'use client';
+
 import { capitalize } from 'xtreme-ui';
 
 import { DashboardProvider } from '#components/context';
@@ -11,13 +13,6 @@ const navItems = [
 	{ label: 'settings', icon: 'f013', value: 'settings' },
 ];
 
-export async function generateMetadata ({ searchParams }: IMetaDataProps) {
-	const s = await searchParams;
-	return {
-		title: `OrderWorder${s.tab ? ` • ${capitalize(s.tab)}` : ''}`,
-	};
-}
-
 const Dashboard = () => {
 	return (
 		<DashboardProvider>
@@ -30,13 +25,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-interface IMetaDataProps {
-	params: {
-		restaurant: string;
-	};
-	searchParams: {
-		tab?: string;
-		[key: string]: string | undefined;
-	};
-}

@@ -8,6 +8,9 @@ const TableSchema = new mongoose.Schema<TTable>({
 	name: { type: String, trim: true, required: true },
 	username: { type: String, trim: true, required: true },
 	restaurantID: { type: String, trim: true, lowercase: true, required: true },
+	tableNumber: { type: Number, required: true },
+	capacity: { type: Number, required: true, min: 1, max: 20 },
+	status: { type: String, enum: ['available', 'occupied', 'reserved', 'maintenance'], default: 'available' },
 },
 { timestamps: true });
 
@@ -39,4 +42,7 @@ export type TTable = {
 	name: string;
 	username: string;
 	restaurantID: string;
+	tableNumber: number;
+	capacity: number;
+	status: string;
 }

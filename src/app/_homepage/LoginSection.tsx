@@ -160,6 +160,9 @@ const LoginSection = () => {
 									/>
 									<Button className='next' label='Sign In' onClick={onNext} loading={nextLoading} />
 								</div>
+								<div className='registerLink'>
+									Don't have an account? <a href="#registrationSection" onClick={() => scrollToSection('registrationSection')}>Register here</a>
+								</div>
 							</div>
 							: <div className='loggedInAction'>
 								{

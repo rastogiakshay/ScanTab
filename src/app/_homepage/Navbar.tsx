@@ -16,13 +16,17 @@ export default function Navbar ({ menuOpen, setMenuOpen }: TNavBarProps) {
 				</div>
 				<div className='container'>
 					{
-						['About Us', 'Features'].map((item, key) => {
+						['Register', 'About Us', 'Features'].map((item, key) => {
 							return (
 								<div
 									key={key}
 									className='item'
 									onClick={() => {
-										scrollToSection('homepage-' + item.toLowerCase().replace(/ /g, ''));
+										if (item === 'Register') {
+											scrollToSection('registrationSection');
+										} else {
+											scrollToSection('homepage-' + item.toLowerCase().replace(/ /g, ''));
+										}
 										setMenuOpen(false);
 									}}
 								>

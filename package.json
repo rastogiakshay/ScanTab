@@ -20,7 +20,7 @@
 		"react": "18.2",
 		"react-dom": "18.2",
 		"react-intersection-observer": "^9.16.0",
-		"react-qr-reader": "^3.0.0-beta-1",
+		"html5-qrcode": "^2.3.8",
 		"react-toastify": "^11.0.5",
 		"sass": "^1.89.2",
 		"swr": "^2.3.3",

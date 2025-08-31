@@ -8,6 +8,7 @@ import FooterSection from './FooterSection';
 import LandingSection from './LandingSection';
 import LoginSection from './LoginSection';
 import Navbar from './Navbar';
+import RegistrationSection from './RegistrationSection';
 
 export default function PageContainer () {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -19,6 +20,7 @@ export default function PageContainer () {
 				<div
 					className={`homepageSections ${menuOpen ? 'menuOpen' : ''}`}
 				>	<LoginSection />
+					<RegistrationSection />
 					<LandingSection />
 					<AboutSection />
 					<FeatureSection />

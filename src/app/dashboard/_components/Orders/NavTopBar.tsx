@@ -20,6 +20,9 @@ const subNavItems = {
 	settings: [
 		{ label: 'account', route: 'account' },
 		{ label: 'menu', route: 'menu' },
+		{ label: 'ocr', route: 'ocr' },
+		{ label: 'advanced ocr', route: 'advancedOcr' },
+		{ label: 'instructions', route: 'instructions' },
 		{ label: 'tables', route: 'tables' },
 	],
 } as Record<string, Array<{ label: string, route: string }>>;

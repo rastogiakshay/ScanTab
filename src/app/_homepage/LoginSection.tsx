@@ -10,6 +10,7 @@ import { DEFAULT_THEME_COLOR, getAnimSrc } from '#utils/constants/common';
 import { TProfile } from '#utils/database/models/profile';
 
 import './loginSection.scss';
+import { scrollToSection } from '#utils/helper/common';
 
 const LoginSection = () => {
 	const { setThemeColor } = useXTheme();

@@ -1,0 +1,398 @@
+.responsiveTest {
+	padding: var(--space-lg);
+	background: var(--background-primary);
+	border-radius: var(--radius-xl);
+	border: 1px solid var(--neutral-200);
+	max-width: 1200px;
+	margin: 0 auto;
+
+	.testHeader {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: var(--space-lg);
+		padding-bottom: var(--space-md);
+		border-bottom: 1px solid var(--neutral-200);
+
+		h3 {
+			margin: 0;
+			font-size: var(--text-xl);
+			font-weight: 600;
+			color: var(--text-primary);
+		}
+
+		.currentInfo {
+			display: flex;
+			gap: var(--space-lg);
+
+			.breakpointInfo,
+			.sizeInfo {
+				display: flex;
+				align-items: center;
+				gap: var(--space-xs);
+
+				.label {
+					font-size: var(--text-sm);
+					color: var(--text-secondary);
+				}
+
+				.value {
+					font-size: var(--text-sm);
+					font-weight: 600;
+					color: var(--brand-primary);
+					padding: var(--space-xs) var(--space-sm);
+					background: var(--brand-50);
+					border-radius: var(--radius-md);
+				}
+			}
+		}
+	}
+
+	.deviceGrid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: var(--space-md);
+		margin-bottom: var(--space-xl);
+
+		.deviceCard {
+			display: flex;
+			align-items: center;
+			gap: var(--space-sm);
+			padding: var(--space-md);
+			background: var(--background-secondary);
+			border: 1px solid var(--neutral-200);
+			border-radius: var(--radius-lg);
+			cursor: pointer;
+			transition: all var(--transition-fast);
+			text-align: left;
+
+			&:hover {
+				border-color: var(--brand-primary);
+				transform: translateY(-2px);
+				box-shadow: var(--shadow-md);
+			}
+
+			&.active {
+				border-color: var(--brand-primary);
+				background: var(--brand-50);
+			}
+
+			.deviceIcon {
+				flex-shrink: 0;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: var(--neutral-100);
+				border-radius: var(--radius-lg);
+				color: var(--text-secondary);
+				font-size: 18px;
+			}
+
+			.deviceInfo {
+				flex-grow: 1;
+
+				.deviceName {
+					font-size: var(--text-sm);
+					font-weight: 600;
+					color: var(--text-primary);
+					margin-bottom: var(--space-xs);
+				}
+
+				.deviceDescription {
+					font-size: var(--text-xs);
+					color: var(--text-secondary);
+					margin-bottom: var(--space-xs);
+				}
+
+				.deviceSize {
+					font-size: var(--text-xs);
+					color: var(--brand-primary);
+					font-weight: 500;
+				}
+			}
+		}
+	}
+
+	.testComponents {
+		margin-bottom: var(--space-xl);
+
+		h4 {
+			margin: 0 0 var(--space-md) 0;
+			font-size: var(--text-lg);
+			font-weight: 600;
+			color: var(--text-primary);
+		}
+
+		.componentTest {
+			padding: var(--space-md);
+			background: var(--background-secondary);
+			border: 1px solid var(--neutral-200);
+			border-radius: var(--radius-lg);
+			margin-bottom: var(--space-md);
+
+			h5 {
+				margin: 0 0 var(--space-sm) 0;
+				font-size: var(--text-base);
+				font-weight: 600;
+				color: var(--text-primary);
+			}
+
+			.testDescription {
+				font-size: var(--text-sm);
+				color: var(--text-secondary);
+				margin-bottom: var(--space-md);
+			}
+
+			.testStatus {
+				display: flex;
+				align-items: center;
+				gap: var(--space-sm);
+				font-size: var(--text-sm);
+				color: var(--text-primary);
+
+				.statusDot {
+					width: 8px;
+					height: 8px;
+					border-radius: var(--radius-full);
+
+					&.mobile {
+						background: var(--warning-600);
+					}
+
+					&.desktop {
+						background: var(--success-600);
+					}
+				}
+			}
+
+			.testGrid {
+				.mockMenuCard {
+					width: 200px;
+					padding: var(--space-sm);
+					background: var(--background-primary);
+					border: 1px solid var(--neutral-200);
+					border-radius: var(--radius-md);
+
+					.mockImage {
+						width: 100%;
+						height: 120px;
+						background: var(--neutral-200);
+						border-radius: var(--radius-sm);
+						margin-bottom: var(--space-sm);
+					}
+
+					.mockContent {
+						.mockTitle {
+							height: 16px;
+							background: var(--neutral-300);
+							border-radius: var(--radius-sm);
+							margin-bottom: var(--space-xs);
+							width: 80%;
+						}
+
+						.mockDescription {
+							height: 12px;
+							background: var(--neutral-200);
+							border-radius: var(--radius-sm);
+							margin-bottom: var(--space-xs);
+							width: 100%;
+						}
+
+						.mockPrice {
+							height: 14px;
+							background: var(--brand-primary);
+							border-radius: var(--radius-sm);
+							width: 40%;
+						}
+					}
+				}
+			}
+
+			.typographyTest {
+				.testHeading {
+					margin: var(--space-sm) 0;
+					line-height: 1.2;
+				}
+
+				.testParagraph {
+					margin: var(--space-sm) 0;
+					line-height: 1.6;
+				}
+
+				.testSmall {
+					display: block;
+					margin: var(--space-sm) 0;
+				}
+			}
+
+			.touchTargetTest {
+				display: flex;
+				gap: var(--space-sm);
+				align-items: center;
+
+				.testButton {
+					background: var(--brand-primary);
+					color: var(--text-inverse);
+					border: none;
+					border-radius: var(--radius-md);
+					cursor: pointer;
+					font-size: var(--text-sm);
+					transition: all var(--transition-fast);
+
+					&:hover {
+						background: var(--brand-secondary);
+					}
+
+					&.small {
+						height: 36px;
+						padding: 0 var(--space-sm);
+					}
+
+					&.medium {
+						height: 44px;
+						padding: 0 var(--space-md);
+					}
+
+					&.large {
+						height: 48px;
+						padding: 0 var(--space-lg);
+					}
+				}
+			}
+		}
+	}
+
+	.breakpointReference {
+		h4 {
+			margin: 0 0 var(--space-md) 0;
+			font-size: var(--text-lg);
+			font-weight: 600;
+			color: var(--text-primary);
+		}
+
+		.breakpointList {
+			display: grid;
+			gap: var(--space-sm);
+
+			.breakpointItem {
+				display: grid;
+				grid-template-columns: 120px 120px 1fr;
+				gap: var(--space-md);
+				padding: var(--space-sm) var(--space-md);
+				background: var(--background-secondary);
+				border: 1px solid var(--neutral-200);
+				border-radius: var(--radius-md);
+				align-items: center;
+
+				.breakpointName {
+					font-size: var(--text-sm);
+					font-weight: 600;
+					color: var(--text-primary);
+				}
+
+				.breakpointRange {
+					font-size: var(--text-sm);
+					color: var(--brand-primary);
+					font-family: monospace;
+				}
+
+				.breakpointDescription {
+					font-size: var(--text-sm);
+					color: var(--text-secondary);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.responsiveTest {
+		padding: var(--space-md);
+
+		.testHeader {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--space-sm);
+
+			.currentInfo {
+				flex-direction: column;
+				gap: var(--space-sm);
+				width: 100%;
+			}
+		}
+
+		.deviceGrid {
+			grid-template-columns: 1fr;
+		}
+
+		.breakpointReference .breakpointList .breakpointItem {
+			grid-template-columns: 1fr;
+			gap: var(--space-xs);
+		}
+
+		.testComponents .componentTest .touchTargetTest {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+}
+
+// Dark theme support
+[data-theme="dark"] {
+	.responsiveTest {
+		background: var(--background-secondary);
+		border-color: var(--neutral-700);
+
+		.testHeader {
+			border-color: var(--neutral-700);
+		}
+
+		.deviceGrid .deviceCard {
+			background: var(--background-primary);
+			border-color: var(--neutral-700);
+
+			&:hover {
+				border-color: var(--brand-primary);
+			}
+
+			&.active {
+				background: rgba(var(--brand-primary-rgb), 0.1);
+			}
+
+			.deviceIcon {
+				background: var(--neutral-800);
+			}
+		}
+
+		.testComponents .componentTest {
+			background: var(--background-primary);
+			border-color: var(--neutral-700);
+
+			.testGrid .mockMenuCard {
+				background: var(--background-secondary);
+				border-color: var(--neutral-700);
+
+				.mockImage {
+					background: var(--neutral-700);
+				}
+
+				.mockContent {
+					.mockTitle {
+						background: var(--neutral-600);
+					}
+
+					.mockDescription {
+						background: var(--neutral-700);
+					}
+				}
+			}
+		}
+
+		.breakpointReference .breakpointList .breakpointItem {
+			background: var(--background-primary);
+			border-color: var(--neutral-700);
+		}
+	}
+}

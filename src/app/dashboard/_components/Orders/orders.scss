@@ -5,10 +5,11 @@
 	height: 100%;
 	width: 100%;
 	background-color: var(--colorBackgroundSecondary);
+	box-sizing: border-box;
 
 	.noContent {
 		> div {
-			margin-top: 20px;
+			margin-top: calc(var(--headerHeight) + 20px);
 
 			span {
 				width: 90%;
@@ -22,6 +23,7 @@
 		flex-grow: 1;
 		height: 100%;
 		overflow: hidden;
+		box-sizing: border-box;
 
 		.list {
 			min-width: 400px;
@@ -30,6 +32,7 @@
 			padding: 0 5px;
 			transition: width 0.1s ease-out;
 			overflow-y: auto;
+			box-sizing: border-box;
 			
 			> .scrollbarVertical {
 				transform: translateX(3px);
@@ -42,7 +45,7 @@
 			}
 
 			.ordersCard:first-child {
-				margin-top: var(--initialHeaderHeight);
+				margin-top: var(--headerHeight);
 			}
 
 			.ordersCard:last-child {
@@ -53,9 +56,10 @@
 		.details {
 			flex-grow: 1;
 			border-radius: 15px;
-			margin: calc(var(--initialHeaderHeight) + 6px) 30px 15px 10px;
+			margin: calc(var(--headerHeight) + 6px) 30px 15px 10px;
 			background-color: var(--colorBackgroundPrimary);
 			box-shadow: 0 0 8px rgb(150 150 150 / 15%);
+			box-sizing: border-box;
 
 			&.reject {
 				box-shadow: 0 0 5px rgb(var(--colorAlertErrorRGB));

@@ -1,0 +1,417 @@
+.restaurantDemo {
+	min-height: 100vh;
+	background: var(--background-primary);
+
+	.demoHeader {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--space-xl) var(--space-lg);
+		background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+		color: var(--text-inverse);
+
+		.headerContent {
+			h1 {
+				margin: 0 0 var(--space-sm) 0;
+				font-size: var(--text-3xl);
+				font-weight: 700;
+				line-height: 1.2;
+			}
+
+			p {
+				margin: 0;
+				font-size: var(--text-lg);
+				opacity: 0.9;
+			}
+		}
+
+		.headerActions {
+			flex-shrink: 0;
+		}
+	}
+
+	.demoNavigation {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: var(--space-md);
+		padding: var(--space-lg);
+		background: var(--background-secondary);
+		border-bottom: 1px solid var(--neutral-200);
+
+		.navButton {
+			display: block;
+			padding: var(--space-md);
+			background: var(--background-primary);
+			border: 2px solid var(--neutral-200);
+			border-radius: var(--radius-lg);
+			cursor: pointer;
+			transition: all var(--transition-fast);
+			text-align: left;
+
+			&:hover {
+				border-color: var(--brand-primary);
+				transform: translateY(-2px);
+				box-shadow: var(--shadow-md);
+			}
+
+			&.active {
+				border-color: var(--brand-primary);
+				background: var(--brand-50);
+				box-shadow: var(--shadow-lg);
+			}
+
+			.navContent {
+				.navTitle {
+					font-size: var(--text-base);
+					font-weight: 600;
+					color: var(--text-primary);
+					margin-bottom: var(--space-xs);
+				}
+
+				.navDescription {
+					font-size: var(--text-sm);
+					color: var(--text-secondary);
+					line-height: 1.4;
+				}
+			}
+		}
+	}
+
+	.demoContent {
+		position: relative;
+		min-height: 600px;
+
+		.demoSection {
+			display: none;
+			padding: var(--space-xl) var(--space-lg);
+
+			&.active {
+				display: block;
+				animation: fadeIn var(--transition-normal) ease-out;
+			}
+
+			.sectionHeader {
+				text-align: center;
+				margin-bottom: var(--space-xl);
+
+				h2 {
+					margin: 0 0 var(--space-sm) 0;
+					font-size: var(--text-2xl);
+					font-weight: 600;
+					color: var(--text-primary);
+				}
+
+				p {
+					margin: 0;
+					font-size: var(--text-lg);
+					color: var(--text-secondary);
+					max-width: 600px;
+					margin: 0 auto;
+				}
+			}
+
+			.sectionContent {
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	.loadingDemo {
+		.demoGroup {
+			margin-bottom: var(--space-xl);
+			padding: var(--space-lg);
+			background: var(--background-secondary);
+			border-radius: var(--radius-xl);
+			border: 1px solid var(--neutral-200);
+
+			h4 {
+				margin: 0 0 var(--space-md) 0;
+				font-size: var(--text-lg);
+				font-weight: 600;
+				color: var(--text-primary);
+			}
+
+			.spinnerGrid {
+				display: flex;
+				gap: var(--space-lg);
+				align-items: center;
+				justify-content: center;
+				padding: var(--space-lg);
+			}
+
+			.skeletonGrid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: var(--space-md);
+			}
+
+			.buttonGrid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: var(--space-md);
+			}
+
+			.toastGrid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				gap: var(--space-sm);
+			}
+		}
+	}
+
+	.dietaryDemo,
+	.tableDemo {
+		.demoDescription {
+			padding: var(--space-lg);
+			background: var(--info-50);
+			border: 1px solid var(--info-200);
+			border-radius: var(--radius-lg);
+			margin-bottom: var(--space-xl);
+
+			p {
+				margin: 0;
+				font-size: var(--text-base);
+				color: var(--info-800);
+				line-height: 1.6;
+			}
+		}
+
+		.filterBenefits,
+		.managementBenefits {
+			margin-top: var(--space-xl);
+			padding: var(--space-lg);
+			background: var(--success-50);
+			border: 1px solid var(--success-200);
+			border-radius: var(--radius-lg);
+
+			h4 {
+				margin: 0 0 var(--space-md) 0;
+				font-size: var(--text-lg);
+				font-weight: 600;
+				color: var(--success-800);
+			}
+
+			ul {
+				margin: 0;
+				padding-left: var(--space-lg);
+
+				li {
+					margin-bottom: var(--space-sm);
+					font-size: var(--text-base);
+					color: var(--success-700);
+					line-height: 1.5;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+
+	.responsiveDemo {
+		.demoDescription {
+			padding: var(--space-lg);
+			background: var(--warning-50);
+			border: 1px solid var(--warning-200);
+			border-radius: var(--radius-lg);
+			margin-bottom: var(--space-xl);
+
+			p {
+				margin: 0;
+				font-size: var(--text-base);
+				color: var(--warning-800);
+				line-height: 1.6;
+			}
+		}
+	}
+
+	.demoFooter {
+		padding: var(--space-xl) var(--space-lg);
+		background: var(--success-50);
+		border-top: 1px solid var(--success-200);
+
+		.footerContent {
+			max-width: 1200px;
+			margin: 0 auto;
+
+			.completionStatus {
+				display: flex;
+				align-items: center;
+				gap: var(--space-sm);
+				margin-bottom: var(--space-lg);
+				font-size: var(--text-lg);
+				font-weight: 600;
+				color: var(--success-700);
+
+				i {
+					font-size: var(--text-xl);
+					color: var(--success-600);
+				}
+			}
+
+			.nextSteps {
+				h4 {
+					margin: 0 0 var(--space-md) 0;
+					font-size: var(--text-lg);
+					font-weight: 600;
+					color: var(--success-800);
+				}
+
+				ul {
+					margin: 0;
+					padding: 0;
+					list-style: none;
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+					gap: var(--space-sm);
+
+					li {
+						padding: var(--space-sm);
+						background: var(--success-100);
+						border-radius: var(--radius-md);
+						font-size: var(--text-base);
+						color: var(--success-700);
+						font-weight: 500;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.restaurantDemo {
+		.demoHeader {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--space-md);
+			padding: var(--space-lg) var(--space-md);
+
+			.headerActions {
+				width: 100%;
+			}
+		}
+
+		.demoNavigation {
+			grid-template-columns: 1fr;
+			padding: var(--space-md);
+		}
+
+		.demoContent .demoSection {
+			padding: var(--space-lg) var(--space-md);
+		}
+
+		.loadingDemo .demoGroup {
+			.buttonGrid,
+			.toastGrid {
+				grid-template-columns: 1fr;
+			}
+
+			.spinnerGrid {
+				flex-wrap: wrap;
+				gap: var(--space-md);
+			}
+		}
+
+		.demoFooter {
+			padding: var(--space-lg) var(--space-md);
+
+			.footerContent .nextSteps ul {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+}
+
+// Dark theme support
+[data-theme="dark"] {
+	.restaurantDemo {
+		background: var(--background-secondary);
+
+		.demoNavigation {
+			background: var(--background-primary);
+			border-color: var(--neutral-700);
+
+			.navButton {
+				background: var(--background-secondary);
+				border-color: var(--neutral-700);
+
+				&:hover {
+					border-color: var(--brand-primary);
+				}
+
+				&.active {
+					background: rgba(var(--brand-primary-rgb), 0.1);
+				}
+			}
+		}
+
+		.loadingDemo .demoGroup {
+			background: var(--background-primary);
+			border-color: var(--neutral-700);
+		}
+
+		.dietaryDemo,
+		.tableDemo {
+			.demoDescription {
+				background: rgba(var(--info-primary-rgb), 0.1);
+				border-color: var(--info-600);
+
+				p {
+					color: var(--info-300);
+				}
+			}
+
+			.filterBenefits,
+			.managementBenefits {
+				background: rgba(var(--success-primary-rgb), 0.1);
+				border-color: var(--success-600);
+
+				h4 {
+					color: var(--success-300);
+				}
+
+				ul li {
+					color: var(--success-400);
+				}
+			}
+		}
+
+		.responsiveDemo .demoDescription {
+			background: rgba(var(--warning-primary-rgb), 0.1);
+			border-color: var(--warning-600);
+
+			p {
+				color: var(--warning-300);
+			}
+		}
+
+		.demoFooter {
+			background: rgba(var(--success-primary-rgb), 0.1);
+			border-color: var(--success-600);
+
+			.footerContent {
+				.completionStatus {
+					color: var(--success-300);
+
+					i {
+						color: var(--success-400);
+					}
+				}
+
+				.nextSteps {
+					h4 {
+						color: var(--success-300);
+					}
+
+					ul li {
+						background: rgba(var(--success-primary-rgb), 0.2);
+						color: var(--success-400);
+					}
+				}
+			}
+		}
+	}
+}

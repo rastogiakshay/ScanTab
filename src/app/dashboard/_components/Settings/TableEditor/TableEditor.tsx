@@ -40,7 +40,7 @@ const TableEditor = () => {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setLoading(true);
-
+		console.log(formData);
 		try {
 			const url = editingTable ? `/api/admin/tables/${editingTable._id}` : '/api/admin/tables';
 			const method = editingTable ? 'PUT' : 'POST';

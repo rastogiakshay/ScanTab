@@ -1,7 +1,9 @@
 import { SyntheticEvent, UIEvent, useEffect, useMemo, useRef, useState } from 'react';
 
 import { signOut, useSession } from 'next-auth/react';
-import { ActionCard, Button, Icon, Spinner } from 'xtreme-ui';
+import { ActionCard, Icon, Spinner } from 'xtreme-ui';
+
+import Button from '#components/base/Button';
 
 import SearchButton from '#components/base/SearchButton';
 import SideSheet from '#components/base/SideSheet';
@@ -163,36 +165,46 @@ const OrderPage = () => {
 							setValue={setSearchValue}
 						/>
 						{
-							(!session.data?.role || !showOrderButton) &&
-							<Button className='loginButton' label={showOrderButton ? 'Order' : 'Scan'} onClick={onLoginClick} />
+							!session.data?.role && !showOrderButton &&
+							<Button 
+								className='loginButton' 
+								variant="primary"
+								onClick={onLoginClick} 
+							>
+								{showOrderButton ? 'Order' : 'Scan'}
+							</Button>
 						}
 						{
 							eligibleToOrder &&
 							<Button
+								variant="secondary"
 								icon='e43b'
-								label={(selectedProducts?.length > 0 ? selectedProducts?.length : '') + ''}
 								onClick={() => setSideSheetOpen(true)}
-							/>
+							>
+								{(selectedProducts?.length > 0 ? selectedProducts?.length : '') + ''}
+							</Button>
 						}
 						{
 							session.data?.role === 'admin' &&
 							<Button
 								className='dashboardButton'
-								label='Dashboard'
+								variant="outline"
 								icon='e09f'
-								iconType='solid'
 								onClick={() => params.router.push('/dashboard')}
-							/>
+							>
+								Dashboard
+							</Button>
 						}
 						{
 							session.data?.role === 'kitchen' &&
 							<Button
 								className='kitchenButton'
-								label='Kitchen'
+								variant="ghost"
 								icon='e09f'
-								iconType='solid'
 								onClick={() => params.router.push('/kitchen')}
-							/>
+							>
+								Kitchen
+							</Button>
 						}
 					</div>
 				</div>

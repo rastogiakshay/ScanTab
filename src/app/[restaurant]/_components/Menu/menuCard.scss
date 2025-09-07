@@ -1,33 +1,53 @@
 .menuCard {
-	--menuPictureHeight: 200px;
+	--card-image-height: 200px;
 
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	background-color: var(--colorBackgroundPrimary);
-	border-radius: 20px;
-	padding: 10px;
-	transition: box-shadow 0.13s ease-in;
-	box-shadow: 0 8px 12px rgb(150 150 150 / 15%);
+	background: var(--background-primary);
+	border: 1px solid var(--neutral-200);
+	border-radius: var(--radius-xl);
+	padding: var(--space-md);
+	transition: all var(--transition-normal);
+	box-shadow: var(--shadow-sm);
+	cursor: pointer;
+	
+	// Touch feedback
+	&.pressed {
+		transform: scale(0.98);
+		box-shadow: var(--shadow-xs);
+	}
+	
+	// Hover states for devices that support it
+	&.hoverSupported:hover {
+		box-shadow: var(--shadow-lg);
+		transform: translateY(-2px);
+		border-color: var(--brand-primary);
+	}
+	
+	// Focus states for accessibility
+	&:focus-within {
+		outline: 2px solid var(--brand-primary);
+		outline-offset: 2px;
+	}
 
+	// Info display states
 	@mixin showInfo {
-		box-shadow: 0 8px 12px rgb(150 150 150 / 15%);
-		transition: box-shadow 0.13s ease-out;
-
 		.picture {
-			> span {
-				transform: scale(1.1);
+			img {
+				transform: scale(1.05);
 			}
 
 			.description {
-				opacity: 0;
+				opacity: 1;
+				backdrop-filter: blur(4px);
 			}
 		}
 
 		.vegIcon {
 			width: auto;
-			background-color: transparent;
-			border: 0 solid var(--colorBackgroundSecondary);
+			background-color: var(--background-primary);
+			border-color: var(--neutral-300);
 
 			.icon {
 				display: none;
@@ -38,8 +58,8 @@
 			}
 		}
 
-		.price {
-			padding: 5px 30px 5px 10px;
+		.priceTag {
+			transform: translateX(-5px);
 		}
 	} 
 	
@@ -47,15 +67,12 @@
 		@include showInfo;
 	}
 
-	&.hoverSupported {
-		&:hover {
-			@include showInfo;
-		}
-
-		.options {
-			.title .info {
-				display: none;
-			}
+	&.hoverSupported:hover {
+		@include showInfo;
+		
+		.infoButton {
+			opacity: 0;
+			pointer-events: none;
 		}
 	}
 
@@ -63,279 +80,350 @@
 		visibility: hidden;
 	}
 
+	// Compact layout for restricted ordering
 	&.restrictOrder {
-		--menuPictureHeight: 220px;
+		--card-image-height: 180px;
+		
+		.itemHeader .itemName {
+			font-size: var(--text-sm);
+			-webkit-line-clamp: 1;
+		}
 
-		.options {
-			.title {
-				> span {
-					-webkit-line-clamp: 1;
-					margin-bottom: 0;
-				}
-
-				.info {
-					width: 18px;
-					min-width: 18px;
-					height: 18px;
-					margin: 10px 10px 0 0;
-				}
-			}
-
-			.footer .addToCart {
-				display: block;
-			}
+		.infoButton {
+			width: var(--space-xl);
+			height: var(--space-xl);
 		}
 	}
 
+	// Layout without image
 	&.withoutImage {
-		--menuPictureHeight: 0px;
-
-		overflow: hidden;
-
-		&.restrictOrder {
-			.options .title > span {
-				font-size: 14px;
-			}
-		}
-
-		.options {
-			padding: 0;
-
-			.title {
-				padding-right: 20px;
-
-				.info {
-					opacity: 0;
-					pointer-events: none;
-				}
-			}
+		--card-image-height: 0px;
+		
+		.content {
+			padding-top: 0;
 		}
 
 		.vegIcon {
-			width: 30px;
-			height: 31px;
-			top: 18px; right: 18px; left: unset;
-			border-color: transparent;
-			background-color: transparent;
+			top: var(--space-md);
+			right: var(--space-md);
+			left: auto;
+			background: transparent;
+			border: none;
 			z-index: 1;
 
 			.label {
-				text-align: end;
-				color: var(--colorContentPrimary);
-				background-color: var(--colorBackgroundPrimary);
+				color: var(--text-primary);
+				background: var(--background-primary);
+				padding: var(--space-xs) var(--space-sm);
+				border-radius: var(--radius-md);
+				font-size: var(--text-xs);
 			}
+		}
+
+		.infoButton {
+			display: none;
 		}
 	}
 
 	.picture {
 		position: relative;
 		width: 100%;
-		height: var(--menuPictureHeight);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border: 1px solid var(--colorContentTertiary);
-		border-radius: 15px;
+		height: var(--card-image-height);
+		border-radius: var(--radius-lg);
 		overflow: hidden;
+		background: var(--neutral-100);
 
-		> span {
-			display: block;
+		img {
 			width: 100%;
 			height: 100%;
-			background-size: cover !important;
-			background-position: center !important;
-			transition: transform 0.5s ease-out;
+			object-fit: cover;
+			transition: transform var(--transition-normal);
 		}
 
 		.description {
-			display: flex;
 			position: absolute;
-			top: 0; left: 0;
+			top: 0;
+			left: 0;
 			width: 100%;
 			height: 100%;
-			color: white;
-			padding: 0 10px;
-			background-color: rgb(0 0 0 / 85%);
-			opacity: 0;
-			justify-content: center;
-			font-size: 11px;
-			font-variation-settings: 'wdth' 75, 'wght' 300;
-			text-align: center;
+			background: rgba(0, 0, 0, 0.7);
+			color: var(--text-inverse);
+			padding: var(--space-md);
+			display: flex;
 			align-items: center;
-			transition: opacity 0.2s ease-out;
+			justify-content: center;
+			text-align: center;
+			font-size: var(--text-sm);
+			line-height: 1.4;
+			opacity: 0;
+			transition: all var(--transition-normal);
 		}
 	}
 
 	.vegIcon {
 		position: absolute;
-		top: calc(var(--menuPictureHeight) - 30px); left: 16px;
+		top: calc(var(--card-image-height) - var(--space-xl));
+		left: var(--space-md);
 		display: flex;
-		justify-content: center;
 		align-items: center;
-		overflow: hidden;
-		border-radius: 9999px;
-		background-color: var(--colorBackgroundPrimary);
-		border: 1px solid var(--colorContentTertiary);
+		justify-content: center;
+		min-width: var(--space-xl);
+		height: var(--space-xl);
+		border-radius: var(--radius-full);
+		background: var(--background-primary);
+		border: 1px solid var(--neutral-300);
+		box-shadow: var(--shadow-sm);
+		transition: all var(--transition-fast);
 
 		&.veg .icon {
-			color: rgb(var(--colorAlertSuccessRGB));
+			color: var(--success-600);
 		}
 
-		/* stylelint-disable-next-line selector-class-pattern */
 		&.non-veg .icon {
-			color: rgb(var(--colorAlertErrorRGB));
+			color: var(--error-600);
 		}
 
-		/* stylelint-disable-next-line selector-class-pattern */
 		&.contains-egg .icon {
-			color: rgb(var(--colorAlertWarningRGB));
+			color: var(--warning-600);
 		}
 
 		.icon {
-			padding: 16px;
+			padding: var(--space-sm);
 		}
 
 		.label {
 			display: none;
-			padding: 10px;
-			font-size: 12px;
+			padding: var(--space-xs) var(--space-sm);
+			font-size: var(--text-xs);
+			font-weight: 500;
 			text-transform: capitalize;
 			white-space: nowrap;
 			user-select: none;
-			color: var(--colorContentPrimary);
+			color: var(--text-primary);
 		}
 	}
 
-	.options {
-		position: relative;
+	.content {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
-		padding: 5px;
+		padding: var(--space-sm) 0;
+		gap: var(--space-xs);
 
-		.title {
+		.itemHeader {
 			display: flex;
-			margin: 0;
-            
-			> span {
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: var(--space-sm);
+
+			.itemName {
 				flex-grow: 1;
-				text-overflow: ellipsis;
+				font-size: var(--text-base);
+				font-weight: 600;
+				line-height: 1.3;
+				color: var(--text-primary);
+				margin: 0;
 				display: -webkit-box;
 				-webkit-line-clamp: 2;
 				-webkit-box-orient: vertical;
-				font-size: 12px;
-				font-variation-settings: 'wdth' 75, 'wght' 600;
 				overflow: hidden;
-				margin: 10px 10px 5px;
 			}
 
-			.info {
-				width: 38px;
-				min-width: 38px;
-				height: 38px;
+			.infoButton {
+				flex-shrink: 0;
+				width: var(--touch-target-min);
+				height: var(--touch-target-min);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: var(--neutral-100);
+				border: 1px solid var(--neutral-300);
+				border-radius: var(--radius-md);
+				color: var(--text-secondary);
 				cursor: pointer;
+				transition: all var(--transition-fast);
 
-				span {
-					$iconSize: 15px;
+				&:hover {
+					background: var(--neutral-200);
+					color: var(--text-primary);
+				}
 
-					display: block;
-					width: 100%;
-					height: 100%;
+				&:focus-visible {
+					outline: 2px solid var(--brand-primary);
+					outline-offset: 2px;
+				}
+
+				&:active {
+					transform: scale(0.95);
 				}
 			}
 		}
 
-		.description {
-			font-size: 11px;
-			margin-left: 10px;
-			text-overflow: ellipsis;
+		.itemDescription {
+			font-size: var(--text-sm);
+			color: var(--text-secondary);
+			line-height: 1.4;
+			margin: 0;
 			display: -webkit-box;
 			-webkit-line-clamp: 2;
 			-webkit-box-orient: vertical;
 			overflow: hidden;
 		}
 
-		.footer {
-			position: absolute;
-			bottom: 0;
-			width: 100%;
+		.itemFooter {
 			display: flex;
-			justify-content: flex-end;
 			align-items: center;
-			padding: 8px 13px;
+			justify-content: space-between;
+			gap: var(--space-sm);
+			margin-top: auto;
+			padding-top: var(--space-sm);
 
-			.priceNoImage {
-				flex: 1;
-				margin: 2px 0 0;
+			.priceDisplay {
+				font-size: var(--text-lg);
+				font-weight: 600;
+				color: var(--text-primary);
+			}
+
+			.quantityControl {
+				flex-shrink: 0;
 			}
 		}
 	}
 
-	.price {
+	.priceTag {
 		position: absolute;
-		top: calc(var(--menuPictureHeight) - 30px); right: -15px;
-		font-size: 12px;
-		margin: 0;
-		font-variation-settings: 'wdth' 75, 'wght' 500;
-		letter-spacing: 0.5px;
-		padding: 5px 20px 5px 10px;
-		color: white;
-		background-color: hsl(var(--colorBrandPrimary));
-		filter: drop-shadow(0 2px 4px rgb(0 0 0 / 50%));
-		border-radius: 0 0 10px;
-		transition: padding 0.5s ease-out;
+		top: calc(var(--card-image-height) - var(--space-xl));
+		right: calc(-1 * var(--space-md));
+		background: var(--brand-primary);
+		color: var(--text-inverse);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		padding: var(--space-xs) var(--space-lg) var(--space-xs) var(--space-sm);
+		border-radius: var(--radius-md) 0 var(--radius-md) 0;
+		box-shadow: var(--shadow-md);
+		transition: all var(--transition-fast);
+		z-index: 2;
 
+		// Ribbon effect with pseudo-elements
 		&::before {
-			position: relative;
-			z-index: 1;
+			content: '';
+			position: absolute;
+			top: -4px;
+			right: 0;
+			width: 0;
+			height: 0;
+			border-left: 4px solid var(--brand-secondary);
+			border-top: 4px solid transparent;
 		}
 
 		&::after {
 			content: '';
 			position: absolute;
-			top: -7px; right: 0;
-			display: block;
-			width: 15px;
-			height: 7px;
-			background-color: hsl(var(--colorBrandPrimary));
-			filter: brightness(65%);
-			clip-path: polygon(0 0, 0 100%, 100% 100%);
+			bottom: -4px;
+			right: 0;
+			width: 0;
+			height: 0;
+			border-left: 4px solid var(--brand-secondary);
+			border-bottom: 4px solid transparent;
 		}
 
-		div {
-			position: absolute;
-			left: -15px;
-			border-color: hsl(var(--colorBrandPrimary)) transparent;
-			border-style: solid;
-
-			&.ribbonTop {
-				top: 0;
-				border-radius: 5px 0 0;
-				border-width: 22px 25px 0;
-			}
-
-			&.ribbonBottom {
-				bottom: 0;
-				border-radius: 0 0 0 5px;
-				border-width: 0 25px 22px;
-			}
+		.ribbonTop,
+		.ribbonBottom {
+			display: none; // Hide old ribbon elements
 		}
 
 		span {
 			position: relative;
-			color: white;
+			z-index: 1;
 		}
 	}
 }
 
-@media (width <= 900px) {
+@media (max-width: 1024px) {
 	.menuCard {
-		--menuPictureHeight: 160px;
+		--card-image-height: 180px;
+		
+		.content .itemHeader .itemName {
+			font-size: var(--text-sm);
+		}
 	}
 }
 
-@media (width <= 750px) {
+@media (max-width: 768px) {
 	.menuCard {
-		--menuPictureHeight: 200px;
+		--card-image-height: 160px;
+		padding: var(--space-sm);
+		
+		.content {
+			gap: var(--space-xs);
+			
+			.itemHeader .itemName {
+				font-size: var(--text-sm);
+				-webkit-line-clamp: 1;
+			}
+			
+			.itemDescription {
+				font-size: var(--text-xs);
+				-webkit-line-clamp: 1;
+			}
+		}
+		
+		.priceTag {
+			font-size: var(--text-xs);
+			padding: var(--space-xs);
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.menuCard {
+		--card-image-height: 140px;
+		
+		.vegIcon {
+			width: var(--space-lg);
+			height: var(--space-lg);
+			
+			.icon {
+				padding: var(--space-xs);
+			}
+		}
+	}
+}
+
+// Dark theme support
+[data-theme="dark"] {
+	.menuCard {
+		background: var(--background-secondary);
+		border-color: var(--neutral-700);
+		
+		&:hover {
+			border-color: var(--brand-primary);
+		}
+		
+		.content {
+			.itemName {
+				color: var(--text-primary);
+			}
+			
+			.itemDescription {
+				color: var(--text-secondary);
+			}
+			
+			.infoButton {
+				background: var(--neutral-800);
+				border-color: var(--neutral-600);
+				color: var(--text-secondary);
+				
+				&:hover {
+					background: var(--neutral-700);
+					color: var(--text-primary);
+				}
+			}
+		}
+		
+		.vegIcon {
+			background: var(--background-secondary);
+			border-color: var(--neutral-600);
+		}
 	}
 }

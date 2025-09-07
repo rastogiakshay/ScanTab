@@ -18,8 +18,8 @@ const QRCodeModal = ({ open, setOpen, table }: QRCodeModalProps) => {
 	const [qrSize, setQrSize] = useState(300);
 
 	if (!table) return null;
-
-	const qrData = `${typeof window !== 'undefined' ? window.location.origin : ''}/scan?restaurant=${table.restaurantID}&table=${table.username}`;
+	console.log(table);
+	const qrData = `${typeof window !== 'undefined' ? window.location.origin : ''}/${table.restaurantID}?table=${table.tableNumber}`;
 
 	const downloadQR = () => {
 		const canvas = document.querySelector('.qr-code-canvas') as HTMLCanvasElement;

@@ -7,7 +7,10 @@ import './globals.scss';
 import PreloadCss from '#components/base/PreloadCss';
 
 export const metadata = {
-	title: 'OrderWorder',
+	title: 'ScanTab - Smart Restaurant Ordering System',
+	description: 'Revolutionizing dining with QR code-based contactless ordering for restaurants and cafes',
+	keywords: 'restaurant, ordering, QR code, contactless, dining, menu, food service',
+	viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
 };
 export default function RootLayout ({ children }: IRootProps) {
 	return (
@@ -15,9 +18,11 @@ export default function RootLayout ({ children }: IRootProps) {
 			<head>
 				<PreloadCss />
 			</head>
-			<GlobalProvider>
-				{ children }
-			</GlobalProvider>
+			<body>
+				<GlobalProvider>
+					{children}
+				</GlobalProvider>
+			</body>
 		</html>
 	);
 }

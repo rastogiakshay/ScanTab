@@ -1,0 +1,329 @@
+.modernButton {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	border-radius: var(--radius-lg);
+	font-family: inherit;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all var(--transition-fast);
+	overflow: hidden;
+	user-select: none;
+	min-height: var(--touch-target-min);
+	
+	// Disable text selection and context menu
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	
+	&:focus-visible {
+		outline: 2px solid var(--brand-primary);
+		outline-offset: 2px;
+	}
+	
+	// Size variants
+	&.size-sm {
+		padding: var(--space-xs) var(--space-sm);
+		font-size: var(--text-sm);
+		min-height: 36px;
+		
+		&.iconOnly {
+			width: 36px;
+			padding: var(--space-xs);
+		}
+	}
+	
+	&.size-md {
+		padding: var(--space-sm) var(--space-md);
+		font-size: var(--text-base);
+		min-height: var(--touch-target-min);
+		
+		&.iconOnly {
+			width: var(--touch-target-min);
+			padding: var(--space-sm);
+		}
+	}
+	
+	&.size-lg {
+		padding: var(--space-md) var(--space-lg);
+		font-size: var(--text-lg);
+		min-height: 52px;
+		
+		&.iconOnly {
+			width: 52px;
+			padding: var(--space-md);
+		}
+	}
+	
+	// Variant styles
+	&.variant-primary {
+		background: var(--brand-primary);
+		color: var(--text-inverse);
+		box-shadow: var(--shadow-sm);
+		
+		&:hover:not(.disabled) {
+			background: var(--brand-secondary);
+			box-shadow: var(--shadow-md);
+			transform: translateY(-1px);
+		}
+		
+		&:active:not(.disabled),
+		&.pressed:not(.disabled) {
+			background: var(--brand-primary);
+			transform: translateY(0) scale(0.98);
+			box-shadow: var(--shadow-xs);
+		}
+	}
+	
+	&.variant-secondary {
+		background: var(--neutral-100);
+		color: var(--text-primary);
+		border: 1px solid var(--neutral-300);
+		
+		&:hover:not(.disabled) {
+			background: var(--neutral-200);
+			border-color: var(--neutral-400);
+			transform: translateY(-1px);
+		}
+		
+		&:active:not(.disabled),
+		&.pressed:not(.disabled) {
+			background: var(--neutral-300);
+			transform: translateY(0) scale(0.98);
+		}
+	}
+	
+	&.variant-outline {
+		background: transparent;
+		color: var(--brand-primary);
+		border: 2px solid var(--brand-primary);
+		
+		&:hover:not(.disabled) {
+			background: var(--brand-primary);
+			color: var(--text-inverse);
+			transform: translateY(-1px);
+		}
+		
+		&:active:not(.disabled),
+		&.pressed:not(.disabled) {
+			transform: translateY(0) scale(0.98);
+		}
+	}
+	
+	&.variant-ghost {
+		background: transparent;
+		color: var(--text-primary);
+		
+		&:hover:not(.disabled) {
+			background: var(--neutral-100);
+			transform: translateY(-1px);
+		}
+		
+		&:active:not(.disabled),
+		&.pressed:not(.disabled) {
+			background: var(--neutral-200);
+			transform: translateY(0) scale(0.98);
+		}
+	}
+	
+	&.variant-danger {
+		background: var(--error-600);
+		color: var(--text-inverse);
+		box-shadow: var(--shadow-sm);
+		
+		&:hover:not(.disabled) {
+			background: var(--error-700);
+			box-shadow: var(--shadow-md);
+			transform: translateY(-1px);
+		}
+		
+		&:active:not(.disabled),
+		&.pressed:not(.disabled) {
+			background: var(--error-800);
+			transform: translateY(0) scale(0.98);
+			box-shadow: var(--shadow-xs);
+		}
+	}
+	
+	// Full width
+	&.fullWidth {
+		width: 100%;
+	}
+	
+	// Disabled state
+	&.disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+		transform: none !important;
+		box-shadow: none !important;
+	}
+	
+	// Loading state
+	&.loading {
+		cursor: wait;
+		
+		.buttonText {
+			opacity: 0.7;
+		}
+	}
+	
+	// Button content
+	.buttonContent {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-xs);
+		z-index: 1;
+	}
+	
+	.buttonSpinner {
+		position: absolute;
+		left: var(--space-sm);
+		
+		&:only-child {
+			position: relative;
+			left: auto;
+		}
+	}
+	
+	.buttonIcon {
+		flex-shrink: 0;
+		transition: transform var(--transition-fast);
+		
+		&.iconLeft {
+			margin-right: var(--space-xs);
+		}
+		
+		&.iconRight {
+			margin-left: var(--space-xs);
+		}
+	}
+	
+	.buttonText {
+		transition: opacity var(--transition-fast);
+	}
+	
+	// Ripple effect
+	.buttonRipple {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: inherit;
+		pointer-events: none;
+		overflow: hidden;
+		
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 0;
+			height: 0;
+			background: rgba(255, 255, 255, 0.3);
+			border-radius: 50%;
+			transform: translate(-50%, -50%);
+			transition: width 0.3s ease, height 0.3s ease;
+		}
+	}
+	
+	&:active:not(.disabled) .buttonRipple::after {
+		width: 300px;
+		height: 300px;
+	}
+}
+
+// Micro-interactions for enhanced UX
+@keyframes buttonPulse {
+	0% {
+		box-shadow: 0 0 0 0 var(--brand-primary);
+	}
+	70% {
+		box-shadow: 0 0 0 10px transparent;
+	}
+	100% {
+		box-shadow: 0 0 0 0 transparent;
+	}
+}
+
+.modernButton.variant-primary:focus-visible {
+	animation: buttonPulse 1.5s infinite;
+}
+
+// Button group styles
+.buttonGroup {
+	display: flex;
+	gap: var(--space-sm);
+	
+	&.vertical {
+		flex-direction: column;
+	}
+	
+	&.attached {
+		gap: 0;
+		
+		.modernButton {
+			border-radius: 0;
+			
+			&:first-child {
+				border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+			}
+			
+			&:last-child {
+				border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+			}
+			
+			&:only-child {
+				border-radius: var(--radius-lg);
+			}
+		}
+		
+		&.vertical .modernButton {
+			&:first-child {
+				border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+			}
+			
+			&:last-child {
+				border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+			}
+		}
+	}
+}
+
+// Dark theme support
+[data-theme="dark"] {
+	.modernButton {
+		&.variant-secondary {
+			background: var(--neutral-800);
+			border-color: var(--neutral-600);
+			color: var(--text-primary);
+			
+			&:hover:not(.disabled) {
+				background: var(--neutral-700);
+				border-color: var(--neutral-500);
+			}
+			
+			&:active:not(.disabled),
+			&.pressed:not(.disabled) {
+				background: var(--neutral-600);
+			}
+		}
+		
+		&.variant-ghost {
+			&:hover:not(.disabled) {
+				background: var(--neutral-800);
+			}
+			
+			&:active:not(.disabled),
+			&.pressed:not(.disabled) {
+				background: var(--neutral-700);
+			}
+		}
+	}
+}

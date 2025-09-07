@@ -129,6 +129,52 @@
 	}
 }
 
+.noCategories {
+	text-align: center;
+	padding: 60px 20px;
+	color: var(--text-secondary);
+
+	h2 {
+		font-size: 24px;
+		margin-bottom: 16px;
+		color: var(--text-primary);
+	}
+
+	p {
+		font-size: 16px;
+		margin-bottom: 20px;
+	}
+}
+
+.noMenuItems {
+	text-align: center;
+	padding: 60px 20px;
+	color: var(--text-secondary);
+	grid-column: 1 / -1;
+
+	.icon {
+		margin-bottom: 16px;
+		opacity: 0.6;
+	}
+
+	p {
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+}
+
+.menuItemHeader {
+	.menuItemOptions {
+		.itemCount {
+			font-size: 14px;
+			color: var(--text-secondary);
+			background: var(--background-secondary);
+			padding: 4px 12px;
+			border-radius: 16px;
+		}
+	}
+}
+
 @media (width <= 750px) {
 	.menuEditor {
 		.menuCategoryEditor {

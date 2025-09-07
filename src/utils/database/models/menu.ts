@@ -47,6 +47,7 @@ MenuSchema.post('save', async function () {
 
 export const Menus = mongoose.models?.menus ?? mongoose.model<TMenu>('menus', MenuSchema);
 export type TMenu = HydratedDocument<{
+	_id: mongoose.Types.ObjectId | string;
 	name: string;
 	restaurantID: string;
 	description: string;
